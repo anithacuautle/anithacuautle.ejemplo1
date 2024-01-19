@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>INNO JEANS | REGISTRO</title>
+    <link rel="icon" href="images/favicon2.png" type="image/gif" />
+<meta content="noindex, nofollow" name="robots">
+<!-- Include CSS File Here -->
+<link href="css/form1.css" rel="stylesheet">
+    
+    <script type="text/javascript">
+    function validekey(evt){
+    //obtener el valor ascii de la tecla presionada:
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    if (code == 8) { //el 8 es el valor de la tecla de retroceso (backspace)
+      return true;
+    }else if (code >= 48 && code <=57) { //valores ASCII de los digitos del 0 al 9
+      return true;
+    }else { //resultado falso para el resto de las teclas
+      return false;
+          }
+      }
+      function soloLetras(e) {
+        var key = e.keyCode || e.which,
+          tecla = String.fromCharCode(key).toLowerCase(),
+          letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+          especiales = [8, 37, 39, 46],
+          tecla_especial = false;
+
+        for (var i in especiales) {
+          if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+          }
+        }
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+          return false;
+        }
+      }
+      function NumCheck(e, field) {
+        key = e.keyCode ? e.keyCode : e.which
+        // backspace
+        if (key == 8) return true
+        // 0-9
+        if (key > 47 && key < 58) {
+          if (field.value == "") return true
+          regexp = /.[0-9]{2}$/
+          return !(regexp.test(field.value))
+        }
+        // .
+        if (key == 46) {
+          if (field.value == "") return false
+          regexp = /^[0-9]+$/
+          return regexp.test(field.value)
+        }
+        // otro key
+        return false
+
+      }
+      function mayusculas(e){
+        e.value = e.value.toUpperCase();
+      }
+    </script>
+    
+</head>
+<body background="images/sd.jpg">
+   
+<div id="first">
+     <form action="regUsuarios.php" method="post">
+<img id="logo" src="images/logos.png"><br>
+    ********************************************************************<br>
+    
+    <input id="fname" type="text" class="email-bt" name="usuario" required placeholder="Usuario" autocomplete="off">
+    <input id="fname" type="text" class="email-bt" name="nombre" required placeholder="Nombre" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+    <input id="fname" type="text" class="email-bt" name="paterno" required placeholder="Apellido Paterno" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+    <input id="fname" type="text" class="email-bt" name="materno" required placeholder="Apellido Materno" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+    <input id="email" type="text" class="email-bt" name="dom" required placeholder="Domicilio" autocomplete="off" onkeyup="mayusculas(this)">
+    <input id="contact" type="text" maxlength="2" class="email-bt" name="edad" required placeholder="Edad" autocomplete="off" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+    <input id="contact" type="text" maxlength="1" class="email-bt" name="sexo" required placeholder="Sexo" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+    <input id="contact" type="text" class="email-bt" name="correo" required placeholder="usuario@dominio.com" autocomplete="off">
+    <input id="contact" type="text" maxlength="10" class="email-bt" name="telefono" required placeholder="Numero de telefono" autocomplete="off" onkeypress="return validekey(event);">
+    <input id="contact" type="Password" class="email-bt" name="psw" required placeholder="Password" autocomplete="off">
+<input id="submit" type="submit" value="Enviar" href="regUsuarios.php">
+<br><br>
+    </form>
+    <form action="login.php" method="post">
+      <input id="submit" type="submit" value="Regresar">
+    </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>INNO JEANS | REGISTRO</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/favicon2.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- owl stylesheets --> 
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+       <!--librerias de livevalidation-->
+      <link href="livevalidation-master/test/css/standard.css" media="screen">
+       <link href="livevalidation-master/test/css/validation.css" media="screen">
+       <!--libreria de javascript-->
+       <script type="text/javascript" src="livevalidation-master/src/livevalidation_prototype.compressed.js"></script>
+       <script type="text/javascript" src="livevalidation-master/src/livevalidation_prototype.js"></script>
+       <script type="text/javascript" src="livevalidation-master/src/livevalidation_standalone.compressed.js"></script>
+       <script type="text/javascript" src="livevalidation-master/src/livevalidation_standalone.js"></script>
+       <script type="text/javascript" src="livevalidation-master/src/tests_prototype_version.js"></script>
+       <script type="text/javascript" src="livevalidation-master/src/tests_standalone_version.js"></script>
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+       <script type="text/javascript">
+    function validekey(evt){
+    //obtener el valor ascii de la tecla presionada:
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    if (code == 8) { //el 8 es el valor de la tecla de retroceso (backspace)
+      return true;
+    }else if (code >= 48 && code <=57) { //valores ASCII de los digitos del 0 al 9
+      return true;
+    }else { //resultado falso para el resto de las teclas
+      return false;
+          }
+      }
+      function soloLetras(e) {
+        var key = e.keyCode || e.which,
+          tecla = String.fromCharCode(key).toLowerCase(),
+          letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+          especiales = [8, 37, 39, 46],
+          tecla_especial = false;
+
+        for (var i in especiales) {
+          if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+          }
+        }
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+          return false;
+        }
+      }
+      function NumCheck(e, field) {
+        key = e.keyCode ? e.keyCode : e.which
+        // backspace
+        if (key == 8) return true
+        // 0-9
+        if (key > 47 && key < 58) {
+          if (field.value == "") return true
+          regexp = /.[0-9]{2}$/
+          return !(regexp.test(field.value))
+        }
+        // .
+        if (key == 46) {
+          if (field.value == "") return false
+          regexp = /^[0-9]+$/
+          return regexp.test(field.value)
+        }
+        // otro key
+        return false
+
+      }
+      function mayusculas(e){
+        e.value = e.value.toUpperCase();
+      }
+    </script>
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+	<!-- header section start -->
+	
+   	<!-- contact section start -->
+    <div class="collection_text"><a href="#"><img src="images/logos.png"></a><br>REGISTRARSE</div>
+    	<div class="container-fluid ram">
+    				<div class="email_box">
+                    <div class="input_main">
+                       <div class="container">
+                          <form action="regUsuarios.php" method="post">
+                            <div class="form-group">
+                              <input type="text" class="email-bt" name="usuario" required placeholder="Usuario" autocomplete="off">
+                                <script type="text/javascript">
+                                var usuario=new LiveValitation('usuario');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" class="email-bt" name="nombre" required placeholder="Nombre" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+                                <script type="text/javascript">
+                                var nombre=new LiveValitation('nombre');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                              <input type="text" class="email-bt" name="paterno" required placeholder="Apellido Paterno" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+                                  <script type="text/javascript">
+                                var paterno=new LiveValitation('paterno');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                              <input type="text" class="email-bt" name="materno" required placeholder="Apellido Materno" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+                                  <script type="text/javascript">
+                                var materno=new LiveValitation('materno');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                              <input type="text" class="email-bt" name="dom" required placeholder="Domicilio" autocomplete="off" onkeyup="mayusculas(this)">
+                                  <script type="text/javascript">
+                                var dom=new LiveValitation('dom');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                              <input type="text" maxlength="2" class="email-bt" name="edad" required placeholder="Edad" autocomplete="off" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                  <script type="text/javascript">
+                                var edad=new LiveValitation('edad');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                              <input type="text" maxlength="1" class="email-bt" name="sexo" required placeholder="Sexo" autocomplete="off" onkeyup="mayusculas(this)" onkeypress="return soloLetras(event)">
+                                  <script type="text/javascript">
+                                var sexo=new LiveValitation('sexo');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                              <input type="text" class="email-bt" name="correo" required placeholder="usuario@dominio.com" autocomplete="off">
+                                  <script type="text/javascript">
+                                var correo=new LiveValitation('crreo');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" maxlength="10" class="email-bt" name="telefono" required placeholder="Número de telefono" autocomplete="off" onkeypress="return validekey(event);">
+                                <script type="text/javascript">
+                                var telefono=new LiveValitation('telefono');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                              <input type="Password" class="email-bt" name="psw" required placeholder="Contraseña" autocomplete="off">
+                                  <script type="text/javascript">
+                                var psw=new LiveValitation('psw');
+                                    usuario.add(Validate.Presence);
+                                </script>
+                            </div>
+                              <div class="form-group">
+                        <button type="submit" name="btn_regis" class="main_bt" ><a href="regUsuarios.php">Registrar</a></button>
+                       </div>  
+                          </form>   
+                       </div> 
+                                        
+                    </div>
+    		</div>
+    			</div>
+       
+   	<!-- contact section end -->
+	<!-- section footer start -->
+    <div class="section_footer">
+    	<div class="container">
+    		<div class="mail_section">
+    			<div class="row">
+    				<div class="col-sm-6 col-lg-2">
+    					<div><a href="#"><img src="images/footer-logo.png"></a></div>
+    				</div>
+    				<div class="col-sm-6 col-lg-2">
+    					<div class="footer-logo"><img src="images/phone-icon.png"><span class="map_text">(71) 1234567890</span></div>
+    				</div>
+    				<div class="col-sm-6 col-lg-3">
+    					<div class="footer-logo"><img src="images/email-icon.png"><span class="map_text">Demo@gmail.com</span></div>
+    				</div>
+    				<div class="col-sm-6 col-lg-3">
+    					<div class="social_icon">
+    						<ul>
+    							<li><a href="#"><img src="images/fb-icon.png"></a></li>
+    							<li><a href="#"><img src="images/twitter-icon.png"></a></li>
+    							<li><a href="#"><img src="images/in-icon.png"></a></li>
+    							<li><a href="#"><img src="images/google-icon.png"></a></li>
+    						</ul>
+    					</div>
+    				</div>
+    				<div class="col-sm-2"></div>
+    			</div>
+    	    </div> 
+    	    <div class="footer_section_2">
+		        <div class="row">
+    		        <div class="col-sm-4 col-lg-2">
+    		        	<p class="dummy_text"> ipsum dolor sit amet, consectetur ipsum dolor sit amet, consectetur  ipsum dolor sit amet,</p>
+    		        </div>
+    		        <div class="col-sm-4 col-lg-2">
+    		        	<h2 class="shop_text">DIRECCIÓN</h2>
+    		        	<div class="image-icon"><img src="images/map-icon.png"><span class="pet_text">Guadalupe Victoria #9 San Agustín, Xalatlaco,México</span></div>
+    		        </div>
+    		        <div class="col-sm-4 col-md-6 col-lg-3">
+    				    <h2 class="shop_text">Our Company </h2>
+    				    <div class="delivery_text">
+    				    	<ul>
+    				    		<li>Delivery</li>
+    				    		<li>Legal Notice</li>
+    				    		<li>About us</li>
+    				    		<li>Secure payment</li>
+    				    		<li>Contact us</li>
+    				    	</ul>
+    				    </div>
+    		        </div>
+    			<div class="col-sm-6 col-lg-3">
+    				<h2 class="adderess_text">Products</h2>
+    				<div class="delivery_text">
+    				    	<ul>
+    				    		<li>Prices drop</li>
+    				    		<li>New products</li>
+    				    		<li>Best sales</li>
+    				    		<li>Contact us</li>
+    				    		<li>Sitemap</li>
+    				    	</ul>
+    				    </div>
+    			</div>
+    			<div class="col-sm-6 col-lg-2">
+    				<h2 class="adderess_text">Newsletter</h2>
+    				<div class="form-group">
+                        <input type="text" class="enter_email" placeholder="Enter Your email" name="Name">
+                    </div>
+                    <button class="subscribr_bt">Subscribe</button>
+    			</div>
+    			</div>
+    	        </div> 
+	        </div>
+    	</div>
+    
+	<!-- section footer end -->
+	<!--<div class="copyright">2019 All Rights Reserved. <a href="https://html.design">Free html  Templates</a></div>-->
+
+
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <!-- javascript --> 
+      <script src="js/owl.carousel.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+         
+         
+$('#myCarousel').carousel({
+            interval: false
+        });
+
+        //scroll slides on swipe for touch enabled devices
+
+        $("#myCarousel").on("touchstart", function(event){
+
+            var yClick = event.originalEvent.touches[0].pageY;
+            $(this).one("touchmove", function(event){
+
+                var yMove = event.originalEvent.touches[0].pageY;
+                if( Math.floor(yClick - yMove) > 1 ){
+                    $(".carousel").carousel('next');
+                }
+                else if( Math.floor(yClick - yMove) < -1 ){
+                    $(".carousel").carousel('prev');
+                }
+            });
+            $(".carousel").on("touchend", function(){
+                $(this).off("touchmove");
+            });
+        });
+      </script> 
+   </body>
+</html>
